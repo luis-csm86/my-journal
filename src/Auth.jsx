@@ -74,7 +74,7 @@ export default function Auth() {
                     color: "#1a1816", textAlign: "center",
                     marginBottom: "6px",
                 }}>
-                    My Journal
+                    Journalife
           </h1>
           <p style={{
             textAlign: "center", fontSize: "13px",
