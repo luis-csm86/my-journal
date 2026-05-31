@@ -138,7 +138,7 @@ export default function App() {
   if (!session) return <Auth />;
 
   const dk = {
-    pageBg: darkMode ? `linear-gradient(135deg, ${mood.darkBg} 0%, #0d0d0d 100%)` : `linear-gradient(135deg, ${mood.bg} 0%, ${mood.glow.replace("cc", "dd")} 100%)`,
+    pageBg: darkMode ? `linear-gradient(135deg, ${mood.darkBg} 0%, #0d0d0d 100%)` : `linear-gradient(135deg, ${mood.bg} 0%, ${mood.bg} 100%)`,
     particleColor: darkMode ? mood.glow.replace("cc", "40") : mood.glow,
     navBg: darkMode ? "rgba(0,0,0,0.3)" : "transparent",
     navBorder: darkMode ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)",
@@ -170,9 +170,9 @@ export default function App() {
           radial-gradient(ellipse at 55% 85%, ${mood.darkBg} 0%, #111111 45%),
           #111111` : 
           `
-          radial-gradient(ellipse at 15% 50%, ${mood.glow.replace("cc","88")} 0%, ${mood.bg} 55%),
-          radial-gradient(ellipse at 85%, 15%, ${mood.glow.replace("cc","66")} 0%, ${mood.bg} 50%),
-          radial-gradient(ellipse at 55% 85%, ${mood.glow.replace("cc","55")} 0%, ${mood.bg} 45%),
+          radial-gradient(ellipse at 15% 50%, ${mood.glow.replace("cc","ff")} 0%, ${mood.bg} 50%),
+          radial-gradient(ellipse at 85%, 15%, ${mood.glow.replace("cc","dd")} 0%, ${mood.bg} 45%),
+          radial-gradient(ellipse at 55% 85%, ${mood.glow.replace("cc","ee")} 0%, ${mood.bg} 40%),
           ${mood.bg}`,
           transition: "background 1.1s ease",
       }}>
