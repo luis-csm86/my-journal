@@ -42,7 +42,6 @@ function useParticles(count = 70) {
 
 const CSS = `
 html, body, #root {
-  background: transparent !important;
   min-height: 100vh;
   margin: 0;
   padding: 0;
