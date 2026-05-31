@@ -8,16 +8,16 @@ import MusicPlayer from "./MusicPlayer";
 import { BookOpenText, BookUser, Sparkles, Settings, LogOut } from 'lucide-react';
 
 const MOODS = [
-  { label: "Happy",     bg: "radial-gradient(ellipse at 15% 50%, #fbd07c 0%, #f7f779 100%)", darkBg: "#3d3000", glow: "#FACA16cc", text: "#713f12", dark: "#b45309" },
-  { label: "Content",   bg: "radial-gradient(135deg, #43e97b 0%, #38f9d7 100%)", darkBg: "#003d1f", glow: "#228B22cc", text: "#14532d", dark: "#16a34a" },
-  { label: "Neutral",   bg: "radial-gradient(135deg, #8399a2 0%, #eef2f3 100%)", darkBg: "#2c2c2a", glow: "#555555cc", text: "#44403c", dark: "#78716c" },
-  { label: "Sad",       bg: "radial-gradient(135deg, #96c6ea 0%, #0974f1 100%)", darkBg: "#0f2347", glow: "#0974f1cc", text: "#1e3a8a", dark: "#3b82f6" },
-  { label: "Anxious",   bg: "radial-gradient(135deg, #f1e1c2 0%, #fcbc98 100%)", darkBg: "#3d1f00", glow: "#FFBF00cc", text: "#7c2d12", dark: "#ea580c" },
-  { label: "Angry",     bg: "radial-gradient(135deg, #ff0844 0%, #ffb199 100%)", darkBg: "#3d1010", glow: "#E60026cc", text: "#7f1d1d", dark: "#dc2626" },
-  { label: "Emotional", bg: "radial-gradient(135deg, #9d80cb 0%, #f7c2e6 100%)", darkBg: "#1e1040", glow: "#BF00FFcc", text: "#3b0764", dark: "#7c3aed" },
-  { label: "In Love",   bg: "radial-gradient(135deg, #f093fb 0%, #f5576c 100%)", darkBg: "#3d1028", glow: "#FF0080cc", text: "#831843", dark: "#dc2777" },
-  { label: "Excited",   bg: "radial-gradient(135deg, #fa709a 0%, #fee140 100%)", darkBg: "#3d2200", glow: "#FE5A1Dcc", text: "#78350f", dark: "#d97706" },
-  { label: "Tired",     bg: "radial-gradient(135deg, #a8edea 0%, #fed6e3 100%)", darkBg: "#252422", glow: "#536878cc", text: "#44403c", dark: "#78716c" },
+  { label: "Happy",     bg: "radial-gradient(ellipse at 15% 50%, #fbd07c 0%, #f7f779 50%)", darkBg: "#3d3000", glow: "#FACA16cc", text: "#713f12", dark: "#b45309" },
+  { label: "Content",   bg: "radial-gradient(ellipse at 85% 15%, #43e97b 0%, #38f9d7 45%)", darkBg: "#003d1f", glow: "#228B22cc", text: "#14532d", dark: "#16a34a" },
+  { label: "Neutral",   bg: "radial-gradient(ellipse at 55% 85%, #8399a2 0%, #eef2f3 85%)", darkBg: "#2c2c2a", glow: "#555555cc", text: "#44403c", dark: "#78716c" },
+  { label: "Sad",       bg: "radial-gradient(ellipse at 15% 50%, #96c6ea 0%, #0974f1 50%)", darkBg: "#0f2347", glow: "#0974f1cc", text: "#1e3a8a", dark: "#3b82f6" },
+  { label: "Anxious",   bg: "radial-gradient(ellipse at 85% 15%, #f1e1c2 0%, #fcbc98 45%)", darkBg: "#3d1f00", glow: "#FFBF00cc", text: "#7c2d12", dark: "#ea580c" },
+  { label: "Angry",     bg: "radial-gradient(ellipse at 55% 85%, #ff0844 0%, #ffb199 85%)", darkBg: "#3d1010", glow: "#E60026cc", text: "#7f1d1d", dark: "#dc2626" },
+  { label: "Emotional", bg: "radial-gradient(ellipse at 15% 50%, #9d80cb 0%, #f7c2e6 50%)", darkBg: "#1e1040", glow: "#BF00FFcc", text: "#3b0764", dark: "#7c3aed" },
+  { label: "In Love",   bg: "radial-gradient(ellipse at 85% 15%, #f093fb 0%, #f5576c 45%)", darkBg: "#3d1028", glow: "#FF0080cc", text: "#831843", dark: "#dc2777" },
+  { label: "Excited",   bg: "radial-gradient(ellipse at 55% 85%, #fa709a 0%, #fee140 85%)", darkBg: "#3d2200", glow: "#FE5A1Dcc", text: "#78350f", dark: "#d97706" },
+  { label: "Tired",     bg: "radial-gradient(ellipse at 15% 50%, #a8edea 0%, #fed6e3 50%)", darkBg: "#252422", glow: "#536878cc", text: "#44403c", dark: "#78716c" },
 ];
 
 function stripHtml(html) {
