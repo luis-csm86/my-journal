@@ -8,16 +8,16 @@ import MusicPlayer from "./MusicPlayer";
 import { BookOpenText, BookUser, Sparkles, Settings, LogOut } from 'lucide-react';
 
 const MOODS = [
-  { label: "Happy",     bg: "#fef9c3", darkBg: "#2a2200", glow: "#fde047cc", text: "#713f12", dark: "#422006" },
-  { label: "Content",   bg: "#dcfce7", darkBg: "#002210", glow: "#86efaccc", text: "#14532d", dark: "#052e16" },
-  { label: "Neutral",   bg: "#f1f0ee", darkBg: "#1a1917", glow: "#d4d0c8cc", text: "#44403c", dark: "#1c1917" },
-  { label: "Sad",       bg: "#dbeafe", darkBg: "#0a1628", glow: "#93c5fdcc", text: "#1e3a8a", dark: "#172554" },
-  { label: "Anxious",   bg: "#ffedd5", darkBg: "#2a1400", glow: "#fdba74cc", text: "#7c2d12", dark: "#431407" },
-  { label: "Angry",     bg: "#fee2e2", darkBg: "#2a0a0a", glow: "#fca5a5cc", text: "#7f1d1d", dark: "#450a0a" },
-  { label: "Emotional", bg: "#ede9fe", darkBg: "#160d2a", glow: "#c4b5fdcc", text: "#3b0764", dark: "#2e1065" },
-  { label: "In Love",   bg: "#fce7f3", darkBg: "#2a0a1a", glow: "#f9a8d4cc", text: "#831843", dark: "#500724" },
-  { label: "Excited",   bg: "#fff7ed", darkBg: "#2a1500", glow: "#fbbf24cc", text: "#78350f", dark: "#451a03" },
-  { label: "Tired",     bg: "#f5f5f4", darkBg: "#161514", glow: "#a8a29ecc", text: "#44403c", dark: "#1c1917" },
+  { label: "Happy",     bg: "#fef9c3", darkBg: "#3d3000", glow: "#fde047cc", text: "#713f12", dark: "#b45309" },
+  { label: "Content",   bg: "#dcfce7", darkBg: "#003d1f", glow: "#86efaccc", text: "#14532d", dark: "#16a34a" },
+  { label: "Neutral",   bg: "#f1f0ee", darkBg: "#2c2c2a", glow: "#d4d0c8cc", text: "#44403c", dark: "#78716c" },
+  { label: "Sad",       bg: "#dbeafe", darkBg: "#0f2347", glow: "#93c5fdcc", text: "#1e3a8a", dark: "#3b82f6" },
+  { label: "Anxious",   bg: "#ffedd5", darkBg: "#3d1f00", glow: "#fdba74cc", text: "#7c2d12", dark: "#ea580c" },
+  { label: "Angry",     bg: "#fee2e2", darkBg: "#3d1010", glow: "#fca5a5cc", text: "#7f1d1d", dark: "#dc2626" },
+  { label: "Emotional", bg: "#ede9fe", darkBg: "#1e1040", glow: "#c4b5fdcc", text: "#3b0764", dark: "#7c3aed" },
+  { label: "In Love",   bg: "#fce7f3", darkBg: "#3d1028", glow: "#f9a8d4cc", text: "#831843", dark: "#dc2777" },
+  { label: "Excited",   bg: "#fff7ed", darkBg: "#3d2200", glow: "#fbbf24cc", text: "#78350f", dark: "#d97706" },
+  { label: "Tired",     bg: "#f5f5f4", darkBg: "#252422", glow: "#a8a29ecc", text: "#44403c", dark: "#78716c" },
 ];
 
 function stripHtml(html) {
@@ -147,7 +147,7 @@ export default function App() {
     inputBg: darkMode ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.04)",
     divider: darkMode ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)",
     toolbarBg: darkMode ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.05)",
-    accentColor: darkMode ? mood.glow.replace("cc", "ff") : mood.text,
+    accentColor: darkMode ? mood.dark : mood.text,
   };
 
   return (
@@ -159,14 +159,14 @@ export default function App() {
         position: "fixed", inset: 0, zIndex: 0,
         background: darkMode
         ? `
-          radial-gradient(ellipse at 20% 50%, ${mood.darkBg} 0%, transparent 60%),
-          radial-gradient(ellipse at 80% 20%, ${mood.dark}99 0%, transparent 55%),
-          radial-gradient(ellipse at 60% 80%, &{mood.darkBg}cc 0%, transparent 50%),
-          #0d0d0d` : 
+          radial-gradient(ellipse at 15% 50%, ${mood.darkBg} 0%, transparent 55%),
+          radial-gradient(ellipse at 85% 15%, ${mood.darkBg} 0%, transparent 50%),
+          radial-gradient(ellipse at 55% 85%, &{mood.darkBg}cc 0%, transparent 45%),
+          #111111` : 
           `
-          radial-gradient(ellipse at 20% 50%, ${mood.bg} 0%, transparent 60%),
-          radial-gradient(ellipse at 80%, 20%, ${mood.glow.replace("cc", "55")} 0%, transparent 55%),
-          radial-gradinet(ellipse at 60% 80%, ${mood.bg}cc 0%, transparent 50%),
+          radial-gradient(ellipse at 15% 50%, ${mood.glow.replace("cc","66")} 0%, transparent 55%),
+          radial-gradient(ellipse at 85%, 15%, ${mood.bg} 0%, transparent 50%),
+          radial-gradinet(ellipse at 55% 85%, ${mood.glow.replace("cc","44")} 0%, transparent 45%),
           #f5f3ef`,
           transition: "background 1.1s ease",
       }}>
@@ -175,7 +175,7 @@ export default function App() {
             left: p.x + "%", top: p.y + "%",
             width: p.size + "px", height: p.size + "px",
             background: darkMode
-              ? mood.glow.replace("cc", "50")
+              ? mood.glow.replace("cc", "60")
               : mood.glow,
             "--op": p.opacity,
             animation: `float ${p.duration}s ${p.delay}s ease-in-out infinite`,
