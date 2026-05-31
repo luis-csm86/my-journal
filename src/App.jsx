@@ -738,102 +738,121 @@ function MemoriesPage({ entries, darkMode, dk }) {
 }
 
 /* ── Settings Page ────────────────────────────────────────── */
-function SettingsPage({ darkMode, setDarkMode, musicEnabled, setMusicEnabled, userName, setUserName, dk, mood }) {
-  const [email, setEmail] = useState("alex@example.com");
-  const [lastName, setLastName] = useState("Rivera");
-  const [activityLog, setActivityLog] = useState(true);
-
-  const Card = ({ title, children }) => (
-    <div style={{
+function SettingsCard({ title, children, dk }) {
+    return (
+      <div style={{
       background: dk.cardBg,
-      border: `1px solid ${dk.cardBorder}`,
+      border: `1px solid ${dk.cardBrder}`,
       backdropFilter: "blur(14px)",
-      borderRadius: "18px", padding: "26px 28px",
+      borderRadius: "18px", padding: "26px 28px", 
       marginBottom: "16px",
     }}>
-      <p className="section-label" style={{ color: dk.accentColor }}>{title}</p>
+      <p style={{
+        fontSize: "10.5px", letterSpacing: "0.12em",
+        textTransform: "uppercase", fontWeight: "600",
+        color: dk.accentColor, marginBottom: "18px",
+      }}>
+        {title}
+      </p>
       {children}
     </div>
-  );
+    );
+  }
 
-  const Field = ({ label, value, onChange, type = "text" }) => (
+function SettingsField({ label, value, onChange, type = "text", dk }) {
+  return (
     <div style={{ marginBottom: "15px" }}>
-      <label style={{ fontSize: "12px", color: dk.sub, display: "block", marginBottom: "6px" }}>{label}</label>
-      <div style={{ padding: "10px 14px", background: dk.inputBg, borderRadius: "10px" }}>
-        <input type={type} value={value} onChange={e => onChange(e.target.value)}
-          style={{ color: dk.text, fontSize: "14px" }} />
-      </div>
+      <label style={{ fontSize: "12px", color: dk.sub, display: "block", marginBottom: "6px" }}>
+        {label}
+        </label>
+        <div style={{ padding: "10px 14px", background: dk.inputBg, borderRadius: "10px" }}>
+          <input
+            type={type}
+            value={value}
+            onChange={e => onChange(e.target.value)}
+            style={{ color: dk.text, fontSize: "14px", width: "100%", border: "none", outline: "none", background: "transparent", fontFamily: "'DM Sans', sans-serif" }}
+            />
+        </div>
     </div>
   );
+}
 
-  const ToggleRow = ({ label, desc, value, onChange }) => (
+function SettingsToggle({ label, desc, value, onChange, dk, darkMode }) {
+  return (
     <div style={{
       display: "flex", justifyContent: "space-between", alignItems: "center",
       padding: "14px 0",
       borderBottom: `1px solid ${dk.divider}`,
     }}>
-      <div style={{ paddingRight: "16px" }}>
+      <div style={{ flex: 1, paddingRight: "24px" }}>
         <p style={{ fontSize: "14px", color: dk.text, fontWeight: "500" }}>{label}</p>
-        {desc && <p style={{ fontSize: "12px", color: dk.sub, marginTop: "2px", lineHeight: "1.5" }}>{desc}</p>}
+        {desc && <p style={{ fontSize: "12px", color: dk.sub, marginTop: "2px" , lineHeight: "1.5" }}>{desc}</p>}
       </div>
-      <button className={`toggle ${value ? "on" : "off"}`}
+      <button
+        className={`toggle ${value ? "on" : "off"}`}
         onClick={() => onChange(!value)}
-        style={{ background: value ? dk.accentColor : (darkMode ? "rgba(255,255,255,0.15)" : "#d6d3d1"), flexShrink: 0 }}
-      />
+        style={{
+          background: value ? dk.accentColor : (darkMode ? "rgba(255,255,255,0.15)" : "#d6d3d1"),
+          flexShrink: 0,
+        }}
+        />
     </div>
   );
+}
+
+function SettingsPage({ darkMode, setDarkMode, musicEnabled, setMusicEnabled, userName, setUserName, dk, mood }) {
+  const [email, setEmail] = useState("alex@example.com");
+  const [lastName, setLastName] = useState("Rivera");
+  const [activityLog, setActivityLog] = useState(true);
 
   return (
-    <div className="fade-up">
+    <div classname="fade-up">
       <h2 style={{
-        fontFamily: "'Playfair Display',serif", fontSize: "34px",
+        fontFamily: "'Playfair Display', sans-serif", fontSize: "34px",
         fontWeight: "700", color: dk.text, marginBottom: "36px",
       }}>
         Settings
       </h2>
 
-      <Card title="Profile">
-        <Field label="First name" value={userName} onChange={setUserName} />
-        <Field label="Last name" value={lastName} onChange={setLastName} />
-        <Field label="Email address" value={email} onChange={setEmail} type="email" />
-      </Card>
+      <SettingsCard title="Profile" dk={dk}>
+        <SettingsField label="First name" value={userName} onChange={setUserName} dk={dk} />
+        <SettingsField label="Last name" value={lastName} onChange={setLastName} dk={dk} />
+        <SettingsField label= "Email address" value={email} onChange={setEmail} type="email" dk={dk} />
+      </SettingsCard>
 
-      <Card title="Preferences">
-        <ToggleRow
-          label="Dark mode"
-          desc="Easier on the eyes at night"
-          value={darkMode} onChange={setDarkMode}
-        />
-        <ToggleRow
-          label="Background music"
-          desc="Songs play while you read your entries"
-          value={musicEnabled} onChange={setMusicEnabled}
-        />
-        <ToggleRow
-          label="Activity log"
-          desc="Track your journaling streak and history"
-          value={activityLog} onChange={setActivityLog}
-        />
-      </Card>
+      <SettingsCard title="Preferences" dk={dk}>
+        <SettingsToggle
+          label="Dark mode" desc="Easier on the eyes at night"
+          value={darkMode} onChange={setDarkMode} dk={dk} darkMode={darkMode}
+          />
+          <SettingsToggle
+          label="Background music" desc="Songs play while you read your entries"
+          value={musicEnabled} onChange={setMusicEnabled} dk={dk} darkMode={darkMode}
+          />
+          <SettingsToggle
+          label="Activity log" desc="Track your journaling streak and history"
+          value={activityLog} onChange={setActivityLog} dk={dk} darkMode={darkMode}
+          />
+      </SettingsCard>
 
-      <Card title="Danger zone">
+      <SettingsCard title="Danger zone" dk={dk}>
         <p style={{ fontSize: "13px", color: dk.sub, marginBottom: "14px", lineHeight: "1.5" }}>
           Deleting all entries is permanent and cannot be undone.
         </p>
         <button style={{
-          padding: "10px 20px",
+          padding: "10px 20px", 
           background: darkMode ? "rgba(239,68,68,0.12)" : "#fee2e2",
-          color: "#b91c1c",
-          border: "1px solid #fca5a5",
+          color: "#b91c1c", border: "1px solid #fca5a5",
           borderRadius: "10px", cursor: "pointer",
-          fontSize: "13px", fontFamily: "'DM Sans',sans-serif", fontWeight: "600",
+          fontSize: "13px", fontFamily: "'DM Sans', sans-serif", fontWeight: "600",
         }}>
           Delete all entries
         </button>
-      </Card>
+      </SettingsCard>
     </div>
   );
 }
+
 
 /* ── Entry Form Modal ─────────────────────────────────────── */
 function EntryForm({ entry, onClose, onPublish, onMoodChange, darkMode, dk }) {
