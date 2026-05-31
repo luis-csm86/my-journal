@@ -139,7 +139,7 @@ export default function App() {
     appName: darkMode ? "#ede9fe" : mood.text,
     navBtnColor: darkMode ? "rgba(255,255,255,0.65)" : mood.dark,
     navBtnBorder: darkMode ? "rgba(255,255,255,0.18)" : `${mood.text}35`,
-    navActiveBg: darkMode ? "#6d28d9" : mood.text,
+    navActiveBg: darkMode ? mood.dark : mood.text,
     cardBg: darkMode ? "rgba(255,255,255,0.055)" : "rgba(255,255,255,0.58)",
     cardBorder: darkMode ? "rgba(255,255,255,0.09)" : "rgba(0,0,0,0.07)",
     text: darkMode ? "#ede9fe" : "#1a1816",
@@ -147,7 +147,7 @@ export default function App() {
     inputBg: darkMode ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.04)",
     divider: darkMode ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)",
     toolbarBg: darkMode ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.05)",
-    accentColor: darkMode ? "#a78bfa" : mood.text,
+    accentColor: darkMode ? mood.glow.replace("cc", "ff") : mood.text,
   };
 
   return (
@@ -157,14 +157,26 @@ export default function App() {
       {/* Animated background */}
       <div style={{
         position: "fixed", inset: 0, zIndex: 0,
-        background: dk.pageBg,
-        transition: "background 1.1s ease",
+        background: darkMode
+        ? `
+          radial-gradient(ellipse at 20% 50%, ${mood.darkBg} 0%, transparent 60%),
+          radial-gradient(ellipse at 80% 20%, ${mood.dark}99 0%, transparent 55%),
+          radial-gradient(ellipse at 60% 80%, &{mood.darkBg}cc 0%, transparent 50%),
+          #0d0d0d` : 
+          `
+          radial-gradient(ellipse at 20% 50%, ${mood.bg} 0%, transparent 60%),
+          radial-gradient(ellipse at 80%, 20%, ${mood.glow.replace("cc", "55")} 0%, transparent 55%),
+          radial-gradinet(ellipse at 60% 80%, ${mood.bg}cc 0%, transparent 50%),
+          #f5f3ef`,
+          transition: "background 1.1s ease",
       }}>
         {particles.map(p => (
           <div key={p.id} className="particle" style={{
             left: p.x + "%", top: p.y + "%",
             width: p.size + "px", height: p.size + "px",
-            background: dk.particleColor,
+            background: darkMode
+              ? mood.glow.replace("cc", "50")
+              : mood.glow,
             "--op": p.opacity,
             animation: `float ${p.duration}s ${p.delay}s ease-in-out infinite`,
           }} />
