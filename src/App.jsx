@@ -42,6 +42,7 @@ function useParticles(count = 70) {
 
 const CSS = `
 html, body, #root {
+  background: transparent !important;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -173,7 +174,6 @@ export default function App() {
           radial-gradient(ellipse at 85%, 15%, ${mood.glow.replace("cc","dd")} 0%, ${mood.bg} 45%),
           radial-gradient(ellipse at 55% 85%, ${mood.glow.replace("cc","ee")} 0%, ${mood.bg} 40%),
           ${mood.bg}`,
-          transition: "background 1.1s ease",
       }}>
         {particles.map(p => (
           <div key={p.id} className="particle" style={{
