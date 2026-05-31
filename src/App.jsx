@@ -8,16 +8,16 @@ import MusicPlayer from "./MusicPlayer";
 import { BookOpenText, BookUser, Sparkles, Settings, LogOut } from 'lucide-react';
 
 const MOODS = [
-  { label: "Happy",     bg: "#fef9c3", darkBg: "#3d3000", glow: "#fde047cc", text: "#713f12", dark: "#b45309" },
-  { label: "Content",   bg: "#dcfce7", darkBg: "#003d1f", glow: "#86efaccc", text: "#14532d", dark: "#16a34a" },
-  { label: "Neutral",   bg: "#f1f0ee", darkBg: "#2c2c2a", glow: "#d4d0c8cc", text: "#44403c", dark: "#78716c" },
-  { label: "Sad",       bg: "#dbeafe", darkBg: "#0f2347", glow: "#93c5fdcc", text: "#1e3a8a", dark: "#3b82f6" },
-  { label: "Anxious",   bg: "#ffedd5", darkBg: "#3d1f00", glow: "#fdba74cc", text: "#7c2d12", dark: "#ea580c" },
-  { label: "Angry",     bg: "#fee2e2", darkBg: "#3d1010", glow: "#fca5a5cc", text: "#7f1d1d", dark: "#dc2626" },
-  { label: "Emotional", bg: "#ede9fe", darkBg: "#1e1040", glow: "#c4b5fdcc", text: "#3b0764", dark: "#7c3aed" },
-  { label: "In Love",   bg: "#fce7f3", darkBg: "#3d1028", glow: "#f9a8d4cc", text: "#831843", dark: "#dc2777" },
-  { label: "Excited",   bg: "#fff7ed", darkBg: "#3d2200", glow: "#fbbf24cc", text: "#78350f", dark: "#d97706" },
-  { label: "Tired",     bg: "#f5f5f4", darkBg: "#252422", glow: "#a8a29ecc", text: "#44403c", dark: "#78716c" },
+  { label: "Happy",     bg: "linear-gradient(135deg, #fbd07c 0%, #f7f779 100%)", darkBg: "#3d3000", glow: "#FACA16cc", text: "#713f12", dark: "#b45309" },
+  { label: "Content",   bg: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)", darkBg: "#003d1f", glow: "#228B22cc", text: "#14532d", dark: "#16a34a" },
+  { label: "Neutral",   bg: "linear-gradient(135deg, #8399a2 0%, #eef2f3 100%)", darkBg: "#2c2c2a", glow: "#555555cc", text: "#44403c", dark: "#78716c" },
+  { label: "Sad",       bg: "linear-gradient(135deg, #96c6ea 0%, #0974f1 100%)", darkBg: "#0f2347", glow: "#0974f1cc", text: "#1e3a8a", dark: "#3b82f6" },
+  { label: "Anxious",   bg: "linear-gradient(135deg, #f1e1c2 0%, #fcbc98 100%)", darkBg: "#3d1f00", glow: "#FFBF00cc", text: "#7c2d12", dark: "#ea580c" },
+  { label: "Angry",     bg: "linear-gradient(135deg, #ff0844 0%, #ffb199 100%)", darkBg: "#3d1010", glow: "#E60026cc", text: "#7f1d1d", dark: "#dc2626" },
+  { label: "Emotional", bg: "linear-gradient(135deg, #9d80cb 0%, #f7c2e6 100%)", darkBg: "#1e1040", glow: "#BF00FFcc", text: "#3b0764", dark: "#7c3aed" },
+  { label: "In Love",   bg: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)", darkBg: "#3d1028", glow: "#FF0080cc", text: "#831843", dark: "#dc2777" },
+  { label: "Excited",   bg: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)", darkBg: "#3d2200", glow: "#FE5A1Dcc", text: "#78350f", dark: "#d97706" },
+  { label: "Tired",     bg: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)", darkBg: "#252422", glow: "#536878cc", text: "#44403c", dark: "#78716c" },
 ];
 
 function stripHtml(html) {
@@ -138,7 +138,7 @@ export default function App() {
   if (!session) return <Auth />;
 
   const dk = {
-    pageBg: darkMode ? `linear-gradient(135deg, ${mood.darkBg} 0%, #0d0d0d 100%)` : `linear-gradient(135deg, ${mood.bg} 0%, ${mood.bg} 100%)`,
+    pageBg: darkMode ? `linear-gradient(135deg, ${mood.darkBg} 0%, #0d0d0d 100%)` : mood.bg,
     particleColor: darkMode ? mood.glow.replace("cc", "40") : mood.glow,
     navBg: darkMode ? "rgba(0,0,0,0.3)" : "transparent",
     navBorder: darkMode ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)",
