@@ -10,44 +10,64 @@ import { BookOpenText, BookUser, Sparkles, Settings, LogOut } from 'lucide-react
 const MOODS = [
   { 
     label: "Happy",     
-    bg: "radial-gradient(ellipse at 15% 50%, #fff8e7 0%, #f3f0b4 50%), radial-gradient(ellipse at 85% 15%, #fff8e7 0%, #f3f0b4 50%), radial-gradient(ellipse at 55% 85%, #fff8e7 0%, #f3f0b4 85%)", 
+    bg: "radial-gradient(ellipse at 15% 50%, #fff8e7 0%, #f3f0b4 50%), radial-gradient(ellipse at 85% 15%, #fff8e7 0%, #f3f0b4 45%), radial-gradient(ellipse at 55% 85%, #fff8e7 0%, #f3f0b4 85%)", 
     darkBg: "#3d3000", glow: "#FACA16cc", text: "#713f12", dark: "#b45309" },
   { 
-    label: "Content",   
-    bg: "radial-gradient(ellipse at 15% 50%, #f0fff0 0%, #d0f0c0 50%), radial-gradient(ellipse at 85% 15%, #f0fff0 0%, #d0f0c0 50%), radial-gradient(ellipse at 55% 85%, #f0fff0 0%, #d0f0c0 85%)", 
-    darkBg: "#003d1f", glow: "#228B22cc", text: "#14532d", dark: "#16a34a" },
-  { 
     label: "Neutral",   
-    bg: "radial-gradient(ellipse at 15% 50%, #8399a2 0%, #eef2f3 50%), radial-gradient(ellipse at 85% 15%, #8399a2 0%, #eef2f3 50%), radial-gradient(ellipse at 55% 85%, #8399a2 0%, #eef2f3 85%)", 
+    bg: "radial-gradient(ellipse at 15% 50%, #8399a2 0%, #eef2f3 50%), radial-gradient(ellipse at 85% 15%, #8399a2 0%, #eef2f3 45%), radial-gradient(ellipse at 55% 85%, #8399a2 0%, #eef2f3 85%)", 
     darkBg: "#2c2c2a", glow: "#555555cc", text: "#44403c", dark: "#78716c" },
   { 
     label: "Sad",       
-    bg: "radial-gradient(ellipse at 15% 50%, #f0f8ff 0%, #b9d9eb 50%), radial-gradient(ellipse at 85% 15%, #f0f8ff 0%, #b9d9eb 50%), radial-gradient(ellipse at 55% 85%, #f0f8ff 0%, #b9d9eb 85%)", 
+    bg: "radial-gradient(ellipse at 15% 50%, #f0f8ff 0%, #b9d9eb 50%), radial-gradient(ellipse at 85% 15%, #f0f8ff 0%, #b9d9eb 45%), radial-gradient(ellipse at 55% 85%, #f0f8ff 0%, #b9d9eb 85%)", 
     darkBg: "#0f2347", glow: "#0974f1cc", text: "#1e3a8a", dark: "#3b82f6" },
   { 
     label: "Anxious",   
-    bg: "radial-gradient(ellipse at 15% 50%, #f7e7ce 0%, #fed8b1 50%), radial-gradient(ellipse at 85% 15%, #f7e7ce 0%, #fed8b1 50%), radial-gradient(ellipse at 55% 85%, #f7e7ce 0%, #fed8b1 85%)", 
+    bg: "radial-gradient(ellipse at 15% 50%, #f7e7ce 0%, #fed8b1 50%), radial-gradient(ellipse at 85% 15%, #f7e7ce 0%, #fed8b1 45%), radial-gradient(ellipse at 55% 85%, #f7e7ce 0%, #fed8b1 85%)", 
     darkBg: "#3d1f00", glow: "#FF8000cc", text: "#7c2d12", dark: "#ea580c" },
   { 
     label: "Angry",     
-    bg: "radial-gradient(ellipse at 15% 50%, #ffe4e1 0%, #fdbcb4 50%), radial-gradient(ellipse at 85% 15%, #ffe4e1 0%, #fdbcb4 50%), radial-gradient(ellipse at 55% 85%, #ffe4e1 0%, #fdbcb4 85%)", 
+    bg: "radial-gradient(ellipse at 15% 50%, #ffe4e1 0%, #fdbcb4 50%), radial-gradient(ellipse at 85% 15%, #ffe4e1 0%, #fdbcb4 45%), radial-gradient(ellipse at 55% 85%, #ffe4e1 0%, #fdbcb4 85%)", 
     darkBg: "#3d1010", glow: "#E60026cc", text: "#7f1d1d", dark: "#dc2626" },
   { 
     label: "Emotional", 
-    bg: "radial-gradient(ellipse at 15% 50%, #9d80cb 0%, #f7c2e6 50%), radial-gradient(ellipse at 85% 15%, #9d80cb 0%, #f7c2e6 50%), radial-gradient(ellipse at 55% 85%, #9d80cb 0%, #f7c2e6 85%)", 
-    darkBg: "#1e1040", glow: "#BF00FFcc", text: "#3b0764", dark: "#7c3aed" },
+    bg: "radial-gradient(ellipse at 15% 50%, #E0FFFF 0%, #81D8D0 50%), radial-gradient(ellipse at 85% 15%, #E0FFFF 0%, #81D8D0 45%), radial-gradient(ellipse at 55% 85%, #E0FFFF 0%, #81D8D0 85%)", 
+    darkBg: "#006D6F", glow: "#008B8Bcc", text: "#01796F", dark: "#007A74" },
   { 
     label: "In Love",   
-    bg: "radial-gradient(ellipse at 15% 50%, #ffdae9 0%, #fbaed2 50%),radial-gradient(ellipse at 85% 15%, #ffdae9 0%, #fbaed2 50%), radial-gradient(ellipse at 55% 85%, #ffdae9 0%, #fbaed2 85%)", 
+    bg: "radial-gradient(ellipse at 15% 50%, #ffdae9 0%, #fbaed2 50%),radial-gradient(ellipse at 85% 15%, #ffdae9 0%, #fbaed2 45%), radial-gradient(ellipse at 55% 85%, #ffdae9 0%, #fbaed2 85%)", 
     darkBg: "#3d1028", glow: "#FF004Fcc", text: "#FF1493", dark: "#dc2777" },
   { 
     label: "Excited",   
-    bg: "radial-gradient(ellipse at 15% 50%, #ffe5b4 0%, #f9bd95 50%), radial-gradient(ellipse at 85% 15%, #ffe5b4 0%, #f9bd95 50%), radial-gradient(ellipse at 55% 85%, #ffe5b4 0%, #f9bd95 85%)", 
+    bg: "radial-gradient(ellipse at 15% 50%, #ffe5b4 0%, #f9bd95 50%), radial-gradient(ellipse at 85% 15%, #ffe5b4 0%, #f9bd95 45%), radial-gradient(ellipse at 55% 85%, #ffe5b4 0%, #f9bd95 85%)", 
     darkBg: "#3d2200", glow: "#fe591dcc", text: "#78350f", dark: "#d97706" },
   { 
     label: "Tired",     
-    bg: "radial-gradient(ellipse at 15% 50%, #e5e4e2 0%, #bebfc5 50%),radial-gradient(ellipse at 85% 15%, #e5e4e2 0%, #bebfc5 50%), radial-gradient(ellipse at 55% 85%, #e5e4e2 0%, #bebfc5 85%)", 
+    bg: "radial-gradient(ellipse at 15% 50%, #e5e4e2 0%, #bebfc5 50%),radial-gradient(ellipse at 85% 15%, #e5e4e2 0%, #bebfc5 45%), radial-gradient(ellipse at 55% 85%, #e5e4e2 0%, #bebfc5 85%)", 
     darkBg: "#252422", glow: "#536878cc", text: "#44403c", dark: "#78716c" },
+  {
+    label: "Good",
+    bg: "radial-gradient(ellipse at 15% 50%, #f4c2c2 0%, #c08081 50%), radial-gradient(ellipse at 85% 15%, #f4c2c2 0%, #c08081 45%), radial-gradient(ellipse at 55% 85%, #f4c2c2 0%, #c08081 85%)",
+    darkBg: "#58111A", glow: "#ED2939cc", text: "#A91101", dark: "#841617"},
+  {
+    label: "Hopeful",   
+    bg: "radial-gradient(ellipse at 15% 50%, #FFE5B4 0%, #FF9966 50%), radial-gradient(ellipse at 85% 15%, #FFE5B4 0%, #FF9966 45%),radial-gradient(ellipse at 55% 85%, #FFE5B4 0%, #FF9966 85%)", 
+    darkBg: "#C04000", glow: "#FF5800cc", text: "#F04A00", dark: "#FF4F00"},
+  {
+    label: "Cheerful",  
+    bg: "radial-gradient(ellipse at 15% 50%, #F0F8FF 0%, #9EB9D4 50%), radial-gradient(ellipse at 85% 15%, #F0F8FF 0%, #9EB9D4 45%),radial-gradient(ellipse at 55% 85%, #F0F8FF 0%, #9EB9D4 85%)", 
+    darkBg: "#16166B" , glow: "#007FFFcc", text: "#0070FF", dark: "#26619C"},
+  {
+    label: "Frustrated", 
+    bg: "radial-gradient(ellipse at 15% 50%, #FAE6FA 0%, #C8A2C8 50%), radial-gradient(ellipse at 85% 15%, #FAE6FA 0%, #C8A2C8 45%),radial-gradient(ellipse at 55% 85%, #FAE6FA 0%, #C8A2C8 85%)", 
+    darkBg: "#5B3256" , glow: "#CC33CCcc", text: "#8B008B", dark: "#683068"},
+  { 
+    label: "Afraid",    
+    bg: "radial-gradient(ellipse at 15% 50%, #FFF5EE 0%, #FFA6C9 50%), radial-gradient(ellipse at 85% 15%, #FFF5EE 0%, #FFA6C9 45%),radial-gradient(ellipse at 55% 85%, #FFF5EE 0%, #FFA6C9 85%)", 
+    darkBg: "#65000B" , glow: "#E3256Bcc", text: "#D71868", dark: "#C71585"},
+  { 
+    label: "Confused",  
+    bg: "radial-gradient(ellipse at 15% 50%, #ddf3d3 0%, #9dcd9e 50%), radial-gradient(ellipse at 85% 15%, #ddf3d3 0%, #9dcd9e 45%),radial-gradient(ellipse at 55% 85%, #ddf3d3 0%, #9dcd9e 85%)", 
+    darkBg: "#00401A" , glow: "#008000cc", text: "#00693E", dark: "#004225"},
 ];
 
 function stripHtml(html) {
