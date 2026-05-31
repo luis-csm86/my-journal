@@ -118,6 +118,8 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [musicEnabled, setMusicEnabled] = useState(true);
   const [userName, setUserName] = useState("Alex");
+  const [lastName, setLastName] = useState("Rivera");
+  const [email, setEmail] = useState("alex@example.com");
   const [bgMood, setBgMood] = useState("Neutral");
   const particles = useParticles(70);
 
@@ -296,6 +298,8 @@ export default function App() {
               darkMode={darkMode} setDarkMode={setDarkMode}
               musicEnabled={musicEnabled} setMusicEnabled={setMusicEnabled}
               userName={userName} setUserName={setUserName}
+              lastName={lastName} setLastName={setLastName}
+              email={email} setEmail={setEmail}
               dk={dk} mood={mood}
             />
           )}
@@ -837,9 +841,7 @@ function SettingsToggle({ label, desc, value, onChange, dk, darkMode }) {
   );
 }
 
-function SettingsPage({ darkMode, setDarkMode, musicEnabled, setMusicEnabled, userName, setUserName, dk, mood }) {
-  const [email, setEmail] = useState("alex@example.com");
-  const [lastName, setLastName] = useState("Rivera");
+function SettingsPage({ darkMode, setDarkMode, musicEnabled, setMusicEnabled, userName, setUserName, email, setEmail, lastName, setLastName, dk, mood }) {
   const [activityLog, setActivityLog] = useState(true);
 
   return (
