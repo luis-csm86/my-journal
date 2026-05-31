@@ -26,6 +26,25 @@ const MOODS = [
   { label: "Tired",     bg: "linear-gradient(134deg, #8399a2 0%, #eef2f3 100%)", glow: "#555555cc", text: "#848482", dark: "#808080" },
   { label: "Scared",    bg: "linear-gradient(134deg, #beb15b 0%, #d5cfac 100%)", glow: "#A0785A", text: "#7B3F00", dark: "#CC7722"},
 ];
+const DARK_MOODS = [
+  { label: "Happy",     bg: "linear-gradient(109deg, #1c1917 0%, #292524 50%, #44403c 100%)", glow: "#fef08a88", text: "#fef08a", dark: "#eab308" },
+  { label: "Good",      bg: "linear-gradient(69deg, #2d1217 0%, #3f1c24 50%, #1f0b0f 100%)", glow: "#ed738588", text: "#fca5a5", dark: "#f43f5e" },
+  { label: "Hopeful",   bg: "linear-gradient(69deg, #2e1505 0%, #43200a 50%, #1c0d02 100%)", glow: "#ffb88e88", text: "#fed7aa", dark: "#f97316"},
+  { label: "Neutral",   bg: "linear-gradient(134deg, #18181b 0%, #27272a 100%)", glow: "#a1a1aa44", text: "#f4f4f5", dark: "#71717a" },
+  { label: "Sad",       bg: "linear-gradient(144deg, #0f172a 0%, #1e293b 50%, #090d16 100%)", glow: "#60a5fa88", text: "#93c5fd", dark: "#3b82f6" },
+  { label: "Terrible",  bg: "linear-gradient(163deg, #0c0f24 0%, #17193b 50%, #050714 100%)", glow: "#595cff88", text: "#a5b4fc", dark: "#4f46e5"},
+  { label: "Anxious",   bg: "linear-gradient(144deg, #2d1910 0%, #3c2419 50%, #1a0e08 100%)", glow: "#ffedd588", text: "#ffedd5", dark: "#ca8a04" },
+  { label: "Angry",     bg: "linear-gradient(69deg, #221c05 0%, #362e0b 100%)", glow: "#f7f77988", text: "#fef08a", dark: "#ca8a04" },
+  { label: "Emotional", bg: "linear-gradient(69deg, #2a0815 0%, #3d0c20 50%, #140309 100%)", glow: "#e64f6f88", text: "#fda4af", dark: "#f43f5e" },
+  { label: "Cheerful",  bg: "linear-gradient(158deg, #360508 0%, #4c0b11 50%, #1a0204 100%)", glow: "#e01f2d88", text: "#fecaca", dark: "#dc2626"},
+  { label: "In Love",   bg: "linear-gradient(69deg, #341121 0%, #4c1d36 50%, #1c0611 100%)", glow: "#f48ec388", text: "#fbcfe8", dark: "#db2777" },
+  { label: "Frustrated", bg: "linear-gradient(134deg, #240a34 0%, #3b1154 100%)", glow: "#d4acfb88", text: "#e9d5ff", dark: "#a855f7"},
+  { label: "Afraid",    bg: "linear-gradient(134deg, #20021d 0%, #380a33 100%)", glow: "#fcc1cf88", text: "#fbcfe8", dark: "#c084fc"},
+  { label: "Excited",   bg: "linear-gradient(109deg, #321600 0%, #4c2406 50%, #1f0d00 100%)", glow: "#FFC78288", text: "#ffeeb2", dark: "#f59e0b" },
+  { label: "Confused",  bg: "linear-gradient(135deg, #05210e 0%, #0f361b 100%)", glow: "#8ee86488", text: "#bbf7d0", dark: "#22c55e"},
+  { label: "Tired",     bg: "linear-gradient(134deg, #1c1f22 0%, #2d3135 100%)", glow: "#8399a244", text: "#e5e7eb", dark: "#9ca3af" },
+  { label: "Scared",    bg: "linear-gradient(134deg, #26210b 0%, #3a3315 100%)", glow: "#beb15b88", text: "#fef08a", dark: "#eab308"},
+];
 
 function stripHtml(html) {
   const tmp = document.createElement("div");
@@ -90,7 +109,7 @@ export default function App() {
   const [musicEnabled, setMusicEnabled] = useState(true);
   const [userName, setUserName] = useState("Alex");
   const [bgMood, setBgMood] = useState("Neutral");
-  const particles = useParticles(28);
+  const particles = useParticles(70);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -134,7 +153,9 @@ export default function App() {
     fetchEntries();
   }, [session]);
 
-  const mood = MOODS.find(m => m.label === bgMood) || MOODS[2];
+  const currentMoodsSource = darkMode ? DARK_MOODS : MOODS;
+
+  const mood = currentMoodsSource.find(m => m.label === bgMood) || currentMoodsSource[2];
 
   if (!session) return <Auth />;
 
