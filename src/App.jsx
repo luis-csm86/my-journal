@@ -41,6 +41,12 @@ function useParticles(count = 70) {
 }
 
 const CSS = `
+html, body, #root {
+  background: transparent !important;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;overflow-x:hidden}
