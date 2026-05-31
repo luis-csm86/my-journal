@@ -159,15 +159,15 @@ export default function App() {
         position: "fixed", inset: 0, zIndex: 0,
         background: darkMode
         ? `
-          radial-gradient(ellipse at 15% 50%, ${mood.darkBg} 0%, transparent 55%),
-          radial-gradient(ellipse at 85% 15%, ${mood.darkBg} 0%, transparent 50%),
-          radial-gradient(ellipse at 55% 85%, &{mood.darkBg}cc 0%, transparent 45%),
+          radial-gradient(ellipse at 15% 50%, ${mood.darkBg} 0%, #111111 55%),
+          radial-gradient(ellipse at 85% 15%, ${mood.darkBg} 0%, #111111 50%),
+          radial-gradient(ellipse at 55% 85%, ${mood.darkBg} 0%, #111111 45%),
           #111111` : 
           `
-          radial-gradient(ellipse at 15% 50%, ${mood.glow.replace("cc","66")} 0%, transparent 55%),
-          radial-gradient(ellipse at 85%, 15%, ${mood.bg} 0%, transparent 50%),
-          radial-gradinet(ellipse at 55% 85%, ${mood.glow.replace("cc","44")} 0%, transparent 45%),
-          #f5f3ef`,
+          radial-gradient(ellipse at 15% 50%, ${mood.glow.replace("cc","88")} 0%, transparent 55%),
+          radial-gradient(ellipse at 85%, 15%, ${mood.glow.replace("cc","66")} 0%, transparent 50%),
+          radial-gradient(ellipse at 55% 85%, ${mood.glow.replace("cc","55")} 0%, transparent 45%),
+          ${mood.bg}`,
           transition: "background 1.1s ease",
       }}>
         {particles.map(p => (
