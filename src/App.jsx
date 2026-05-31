@@ -165,6 +165,18 @@ export default function App() {
     fetchEntries();
   }, [session]);
 
+  useEffect(() =>{
+    const loadProfile = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+    const meta = user.user_metadata;
+    if (meta?.first_name) setUserName(meta.first_name);
+    if (meta?.last_name) setLastName(meta.last_name);
+    if (user.email) setEmail(user.email);
+  };
+  loadProfile();
+}, [session]);
+
   const mood = MOODS.find(m => m.label === bgMood) || MOODS[2];
 
   if (!session) return <Auth />;
@@ -800,7 +812,7 @@ function SettingsCard({ title, children, dk }) {
     );
   }
 
-function SettingsField({ label, value, onChange, type = "text", dk }) {
+function SettingsField({ label, value, onChange, onBlur, type = "text", dk }) {
   return (
     <div style={{ marginBottom: "15px" }}>
       <label style={{ fontSize: "12px", color: dk.sub, display: "block", marginBottom: "6px" }}>
@@ -811,6 +823,7 @@ function SettingsField({ label, value, onChange, type = "text", dk }) {
             type={type}
             value={value}
             onChange={e => onChange(e.target.value)}
+            onBlur={onBlur}
             style={{ color: dk.text, fontSize: "14px", width: "100%", border: "none", outline: "none", background: "transparent", fontFamily: "'DM Sans', sans-serif" }}
             />
         </div>
@@ -843,6 +856,12 @@ function SettingsToggle({ label, desc, value, onChange, dk, darkMode }) {
 
 function SettingsPage({ darkMode, setDarkMode, musicEnabled, setMusicEnabled, userName, setUserName, email, setEmail, lastName, setLastName, dk, mood }) {
   const [activityLog, setActivityLog] = useState(true);
+  const saveProfile = async (field, value) => {
+    const { error } = await supabase.auth.updateUser({
+      data: { [field]: value }
+    });
+    if (error) console.error(error);
+  };
 
   return (
     <div classname="fade-up">
@@ -854,9 +873,9 @@ function SettingsPage({ darkMode, setDarkMode, musicEnabled, setMusicEnabled, us
       </h2>
 
       <SettingsCard title="Profile" dk={dk}>
-        <SettingsField label="First name" value={userName} onChange={setUserName} dk={dk} />
-        <SettingsField label="Last name" value={lastName} onChange={setLastName} dk={dk} />
-        <SettingsField label= "Email address" value={email} onChange={setEmail} type="email" dk={dk} />
+        <SettingsField label="First name" value={userName} onChange={setUserName} onBlur={() => saveProfile("first_name", userName)} dk={dk} />
+        <SettingsField label="Last name" value={lastName} onChange={setLastName} onBlur={() => saveProfile("last_name", lastName)} dk={dk} />
+        <SettingsField label="Email address" value={email} onChange={setEmail} type="email" onBlur={() => saveProfile("email", email)} dk={dk} />
       </SettingsCard>
 
       <SettingsCard title="Preferences" dk={dk}>
