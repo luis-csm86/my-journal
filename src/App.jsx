@@ -138,13 +138,13 @@ export default function App() {
   if (!session) return <Auth />;
 
   const dk = {
-    pageBg: darkMode ? `linear-gradient(135deg, ${mood.darkBg} 0%, #0d0d0d 100%)` : `linear-gradient(135deg, ${mood.bg} 0%, ${mood.bg}dd 100%)`,
+    pageBg: darkMode ? `linear-gradient(135deg, ${mood.darkBg} 0%, #0d0d0d 100%)` : `linear-gradient(135deg, ${mood.bg} 0%, ${mood.glow.replace("cc", "dd")} 100%)`,
     particleColor: darkMode ? mood.glow.replace("cc", "40") : mood.glow,
     navBg: darkMode ? "rgba(0,0,0,0.3)" : "transparent",
     navBorder: darkMode ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)",
     appName: darkMode ? "#ede9fe" : mood.text,
     navBtnColor: darkMode ? "rgba(255,255,255,0.65)" : mood.dark,
-    navBtnBorder: darkMode ? "rgba(255,255,255,0.18)" : `${mood.text}35`,
+    navBtnBorder: darkMode ? "rgba(255,255,255,0.18)" : `${mood.text}`,
     navActiveBg: darkMode ? mood.dark : mood.text,
     cardBg: darkMode ? "rgba(255,255,255,0.055)" : "rgba(255,255,255,0.58)",
     cardBorder: darkMode ? "rgba(255,255,255,0.09)" : "rgba(0,0,0,0.07)",
