@@ -164,9 +164,9 @@ export default function App() {
           radial-gradient(ellipse at 55% 85%, ${mood.darkBg} 0%, #111111 45%),
           #111111` : 
           `
-          radial-gradient(ellipse at 15% 50%, ${mood.glow.replace("cc","88")} 0%, transparent 55%),
-          radial-gradient(ellipse at 85%, 15%, ${mood.glow.replace("cc","66")} 0%, transparent 50%),
-          radial-gradient(ellipse at 55% 85%, ${mood.glow.replace("cc","55")} 0%, transparent 45%),
+          radial-gradient(ellipse at 15% 50%, ${mood.glow.replace("cc","88")} 0%, ${mood.bg} 55%),
+          radial-gradient(ellipse at 85%, 15%, ${mood.glow.replace("cc","66")} 0%, ${mood.bg} 50%),
+          radial-gradient(ellipse at 55% 85%, ${mood.glow.replace("cc","55")} 0%, ${mood.bg} 45%),
           ${mood.bg}`,
           transition: "background 1.1s ease",
       }}>
